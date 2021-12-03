@@ -22,9 +22,6 @@ def create_rotate_img():
     image_path = "training/images_rotated"
     image_path_gt = "training/groundtruth_rotated"
 
-    #os.mkdir(image_path)
-    #os.mkdir(image_path_gt)
-
     for i in range(a):
         t = Image.open(train_root_dir + train_img_file[i])
         t_gt = Image.open(train_gt_root_dir + train_gt_img_file[i])
