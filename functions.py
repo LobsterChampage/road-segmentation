@@ -1,4 +1,4 @@
-import os,sys
+import os
 from PIL import Image
 
 def create_rotate_img():
@@ -32,3 +32,9 @@ def create_rotate_img():
 
             rot_t = rot_t.save(f"{image_path}/rot{i}_{j}.png")
             rot_t_gt = rot_t_gt.save(f"{image_path_gt}/rot{i}_{j}.png")
+
+def extract_from_folders():
+    for i in range(1,51):
+        path_deep = 'test_set_images/test_' + str(i) + '/test_' + str(i) + '.png'
+        path_shallow = 'test_set_images/test_' + str(i) + '.png'
+        os.replace(path_deep, path_shallow)
