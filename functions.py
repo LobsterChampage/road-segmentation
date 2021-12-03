@@ -1,3 +1,6 @@
+import os,sys
+from PIL import Image
+
 def create_rotate_img():
     t = Image.open(train_root_dir + train_img_file[0])
     t_gt = Image.open(train_gt_root_dir + train_gt_img_file[0])
