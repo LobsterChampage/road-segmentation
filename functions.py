@@ -15,9 +15,6 @@ def create_rotate_img():
     b = len(folders_gt_train)
     train_gt_img_file = os.listdir(train_gt_root_dir)
     print("Loading ground truth training images: " + str(b))
-    
-    t = Image.open(train_root_dir + train_img_file[0])
-    t_gt = Image.open(train_gt_root_dir + train_gt_img_file[0])
 
     image_path = "training/images_rotated"
     image_path_gt = "training/groundtruth_rotated"
