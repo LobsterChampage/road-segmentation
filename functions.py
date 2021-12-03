@@ -27,8 +27,8 @@ def create_rotate_img():
         t_gt = Image.open(train_gt_root_dir + train_gt_img_file[i])
 
         for j in range(0, 360, 90):
-            rot_t = t.transpose(Image.rotate(j))
-            rot_t_gt = t_gt.transpose(Image.rotate(j))
+            rot_t = t.rotate(j)
+            rot_t_gt = t_gt.rotate(j)
 
             rot_t = rot_t.save(f"{image_path}/rot{i}_{j}.png")
             rot_t_gt = rot_t_gt.save(f"{image_path_gt}/rot{i}_{j}.png")
