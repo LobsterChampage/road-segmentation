@@ -1,5 +1,6 @@
 import os
 from PIL import Image
+import re
 
 def create_rotate_img():
     #train satimg
@@ -27,3 +28,8 @@ def extract_from_folders():
         path_deep = 'test_set_images/test_' + str(i) + '/test_' + str(i) + '.png'
         path_shallow = 'test_set_images/test_' + str(i) + '.png'
         os.replace(path_deep, path_shallow)
+
+def sorted_alphanumeric(data):
+    convert = lambda text: int(text) if text.isdigit() else text.lower()
+    alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
+    return sorted(data, key=alphanum_key)
