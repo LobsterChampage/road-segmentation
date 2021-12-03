@@ -31,8 +31,8 @@ def create_rotate_img():
 
         for j in range(0, 360, 90):
             if j == 0:
-                rot_t = t.transpose(Image.ROTATE_90)
-                rot_t_gt = t_gt.transpose(Image.ROTATE_90)
+                rot_t = t.transpose(Image.ROTATE_0)
+                rot_t_gt = t_gt.transpose(Image.ROTATE_0)
             elif j == 90:
                 rot_t = t.transpose(Image.ROTATE_90)
                 rot_t_gt = t_gt.transpose(Image.ROTATE_90)
@@ -41,7 +41,7 @@ def create_rotate_img():
                 rot_t_gt = t_gt.transpose(Image.ROTATE_180)
             else:
                 rot_t = t.transpose(Image.ROTATE_270)
-                rot_t_gt = t_gt.transpose(Image.ROTATE_180)
+                rot_t_gt = t_gt.transpose(Image.ROTATE_270)
 
             rot_t = rot_t.save(f"{image_path}/rot{i}_{j}.png")
             rot_t_gt = rot_t_gt.save(f"{image_path_gt}/rot{i}_{j}.png")
