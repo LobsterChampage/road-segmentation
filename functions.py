@@ -2,6 +2,20 @@ import os,sys
 from PIL import Image
 
 def create_rotate_img():
+    #train normal
+    train_root_dir = "training/images/"
+    folders_train = os.listdir(train_root_dir)
+    a = len(folders_train)
+    train_img_file = os.listdir(train_root_dir)
+    print("Loading training images: " + str(a))
+
+    #train gt
+    train_gt_root_dir = "training/groundtruth/"
+    folders_gt_train = os.listdir(train_gt_root_dir)
+    b = len(folders_gt_train)
+    train_gt_img_file = os.listdir(train_gt_root_dir)
+    print("Loading ground truth training images: " + str(b))
+    
     t = Image.open(train_root_dir + train_img_file[0])
     t_gt = Image.open(train_gt_root_dir + train_gt_img_file[0])
 
