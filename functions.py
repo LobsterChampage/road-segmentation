@@ -33,3 +33,23 @@ def sorted_alphanumeric(data):
     convert = lambda text: int(text) if text.isdigit() else text.lower()
     alphanum_key = lambda key: [ convert(c) for c in re.split('([0-9]+)', key) ] 
     return sorted(data, key=alphanum_key)
+
+def create_submission(filename, Y_test):
+    def create_ids_for_submission():
+        a = 50
+        b = 592
+        ids = []
+        for x in range(1, a+1):
+            for y in range(0, b+1, 16):
+                for z in range(0, b+1, 16):
+                    ids.append(("00" if len(str(x)) == 1 else "0") + str(x) + "_" + str(y) + "_" + str(z))
+        return ids
+    
+    ids = create_ids_for_submission()
+    
+    dir = 'submissions/'
+    f = open(dir + filename, 'a')
+    f.write("id,prediction\n")
+    for i in range(len(Y_test)):
+        f.write(str(ids[i]) + "," + str(Y_test[i]) + "\n")
+    f.close()
