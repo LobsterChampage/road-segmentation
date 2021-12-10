@@ -134,5 +134,6 @@ predictions/
 linearPrivate.ipynb
 .metals
 
-NN.ipynb
 .vscode
+
+skeye
