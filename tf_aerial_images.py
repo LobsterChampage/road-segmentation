@@ -21,6 +21,7 @@ import tensorflow.python.platform
 
 import numpy
 import tensorflow as tf
+import tensorflow.compat.v1 as tf
 
 NUM_CHANNELS = 3  # RGB images
 PIXEL_DEPTH = 255
@@ -241,7 +242,8 @@ def main(argv=None):  # pylint: disable=unused-argument
     # This is where training samples and labels are fed to the graph.
     # These placeholder nodes will be fed a batch of training data at each
     # training step using the {feed_dict} argument to the Run() call below.
-    train_data_node = tf.placeholder(
+    #train_data_node = tf.placeholder(
+    train_data_node = tf.compat.v1.disable_eager_execution(
         tf.float32,
         shape=(BATCH_SIZE, IMG_PATCH_SIZE, IMG_PATCH_SIZE, NUM_CHANNELS))
     train_labels_node = tf.placeholder(tf.float32,
