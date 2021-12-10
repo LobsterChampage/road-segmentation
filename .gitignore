@@ -133,3 +133,6 @@ submissionNotebook.ipynb
 predictions/
 linearPrivate.ipynb
 .metals
+
+NN.ipynb
+.vscode
