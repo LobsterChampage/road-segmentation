@@ -5,28 +5,6 @@ import numpy as np
 import tensorflow.keras.backend as kb
 
 
-def create_rotate_img():
-    # train satimg
-    train_root_dir = "training/images/"
-    train_img_file = os.listdir(train_root_dir)
-    a = len(train_img_file)
-
-    # train gt
-    train_gt_root_dir = "training/groundtruth/"
-    train_gt_img_file = os.listdir(train_gt_root_dir)
-
-    image_path = "training/images_rotated"
-    image_path_gt = "training/groundtruth_rotated"
-
-    for i in range(a):
-        t = Image.open(train_root_dir + train_img_file[i])
-        t_gt = Image.open(train_gt_root_dir + train_gt_img_file[i])
-
-        for j in range(0, 360, 90):
-            t.rotate(j).save(f"{image_path}/rot{i}_{j}.png")
-            t_gt.rotate(j).save(f"{image_path_gt}/rot{i}_{j}.png")
-
-
 def extract_from_folders():
     for i in range(1, 51):
         path_deep = 'test_set_images/test_' + \
@@ -75,23 +53,6 @@ def to_numpy(images, width, height):
                 else:
                     arr.append(whole_img[w:w+width, h:h+height])
     return np.array(arr)
-
-
-def get_random_train(imgs, gt, crop_width, crop_height):
-    x = []
-    y = []
-    width = imgs[0].shape[1]
-    height = imgs[0].shape[0]
-    range_w = width - crop_width
-    range_h = height - crop_height
-    for i in range(len(imgs)):
-        start_w = np.random.randint(0, range_w + 1)
-        start_h = np.random.randint(0, range_h + 1)
-        x.append(imgs[i][start_w:start_w+crop_width,
-                 start_h:start_h+crop_height, :])
-        y.append(gt[i][start_w:start_w+crop_width,
-                 start_h:start_h+crop_height, :])
-    return np.asarray(x), np.asarray(y)
 
 
 def split_data(x, y, ratio, seed=1):
